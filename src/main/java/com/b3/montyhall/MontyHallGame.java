@@ -26,7 +26,8 @@ public class MontyHallGame {
 
     private void randomlyAddAWin() {
         Random random = new Random();
-        int intBoxNumberWithWin = random.nextInt(numberOfBoxes - 1);
+        int intBoxNumberWithWin = random.nextInt(numberOfBoxes );
+
 
         montyHallBoxList.get(intBoxNumberWithWin).setWinsCar(true);
     }
