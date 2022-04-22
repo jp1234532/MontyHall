@@ -26,17 +26,14 @@ public class MontyHallGame {
 
     private void randomlyAddAWin() {
         Random random = new Random();
-        int intBoxNumberWinWin = random.nextInt(numberOfBoxes - 1);
+        int intBoxNumberWithWin = random.nextInt(numberOfBoxes - 1);
 
-        montyHallBoxList.get(intBoxNumberWinWin).setWinsCar(true);
+        montyHallBoxList.get(intBoxNumberWithWin).setWinsCar(true);
     }
 
     public MontyHallBox pickAndRemoveFirstBox() throws IncorrectNumberOfBoxesException {
 
-        if(getMontyHallBoxList().size() != numberOfBoxes) {
-            throw new IncorrectNumberOfBoxesException("pickFirstBox anropad i fel ordning");
-        }
-
+        verifyNumberOfBoxesIsCorrect(numberOfBoxes, "pickFirstBox anropad i fel ordning");
 
         Random random = new Random();
         int intRandomChoseBox = random.nextInt(montyHallBoxList.size());
@@ -44,9 +41,8 @@ public class MontyHallGame {
     }
     public void removeOneEmptyRemaingBox() throws IncorrectNumberOfBoxesException {
 
-        if(getMontyHallBoxList().size() != numberOfBoxes - 1) {
-            throw new IncorrectNumberOfBoxesException("removeOneEmptyRemaingBox anropad i fel ordning");
-        }
+        verifyNumberOfBoxesIsCorrect(numberOfBoxes - 1, "removeOneEmptyRemaingBox anropad i fel ordning");
+
 
         boolean isWinFirstRemainingBox = montyHallBoxList.get(0).isWinsCar();
         if(!isWinFirstRemainingBox) {
@@ -56,11 +52,16 @@ public class MontyHallGame {
     }
 
     public MontyHallBox switchBox()  throws IncorrectNumberOfBoxesException  {
-        if(getMontyHallBoxList().size() != numberOfBoxes - 2) {
-            throw new IncorrectNumberOfBoxesException("switchBox anropad i fel ordning");
-        }
+
+        verifyNumberOfBoxesIsCorrect(numberOfBoxes - 2, "switchBox anropad i fel ordning");
 
         return montyHallBoxList.get(0);
+    }
+
+    public void verifyNumberOfBoxesIsCorrect(int expectedNumberOfBoxes, String message) throws IncorrectNumberOfBoxesException {
+        if(getMontyHallBoxList().size() != expectedNumberOfBoxes) {
+            throw new IncorrectNumberOfBoxesException(message);
+        }
     }
 
 }
