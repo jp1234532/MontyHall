@@ -42,7 +42,8 @@ public class MontyHallGame {
     }
     public void removeOneEmptyRemaingBox() throws IncorrectNumberOfBoxesException {
 
-        verifyNumberOfBoxesIsCorrect(numberOfBoxes - 1, "removeOneEmptyRemaingBox anropad i fel ordning");
+        int expectedNumberOfBoxes = numberOfBoxes - 1;
+        verifyNumberOfBoxesIsCorrect(expectedNumberOfBoxes, "removeOneEmptyRemaingBox anropad i fel ordning");
 
 
         boolean isWinFirstRemainingBox = montyHallBoxList.get(0).isWinsCar();
@@ -54,7 +55,8 @@ public class MontyHallGame {
 
     public MontyHallBox switchBox()  throws IncorrectNumberOfBoxesException  {
 
-        verifyNumberOfBoxesIsCorrect(numberOfBoxes - 2, "switchBox anropad i fel ordning");
+        int expectedNumberOfBoxes = numberOfBoxes - 2;
+        verifyNumberOfBoxesIsCorrect(expectedNumberOfBoxes, "switchBox anropad i fel ordning");
 
         return montyHallBoxList.get(0);
     }
