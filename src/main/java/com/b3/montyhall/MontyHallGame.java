@@ -26,10 +26,10 @@ public class MontyHallGame {
 
     private void randomlyAddAWin() {
         Random random = new Random();
-        int intBoxNumberWithWin = random.nextInt(intNumberOfBoxesFromTheBeginning);
+        int intBoxIndexWithWin = random.nextInt(intNumberOfBoxesFromTheBeginning);
 
 
-        montyHallBoxList.get(intBoxNumberWithWin).setWinsCar(true);
+        montyHallBoxList.get(intBoxIndexWithWin).setWinsCar(true);
     }
 
     public MontyHallBox pickAndRemoveFirstBox() throws IncorrectNumberOfBoxesException {
