@@ -7,7 +7,7 @@ import java.util.Random;
 public class MontyHallGame {
 
     private List<MontyHallBox> montyHallBoxList = new ArrayList<>();
-    private final int numberOfBoxes = 3;
+    private final int intNumberOfBoxesFromTheBeginning = 3;
 
     public List<MontyHallBox> getMontyHallBoxList() {
         return montyHallBoxList;
@@ -18,7 +18,7 @@ public class MontyHallGame {
 
     public MontyHallGame() {
 
-        for(int i = 0; i < numberOfBoxes; ++i) {
+        for(int i = 0; i < intNumberOfBoxesFromTheBeginning; ++i) {
             montyHallBoxList.add(new MontyHallBox());
         }
         randomlyAddAWin();
@@ -26,7 +26,7 @@ public class MontyHallGame {
 
     private void randomlyAddAWin() {
         Random random = new Random();
-        int intBoxNumberWithWin = random.nextInt(numberOfBoxes );
+        int intBoxNumberWithWin = random.nextInt(intNumberOfBoxesFromTheBeginning);
 
 
         montyHallBoxList.get(intBoxNumberWithWin).setWinsCar(true);
@@ -34,7 +34,7 @@ public class MontyHallGame {
 
     public MontyHallBox pickAndRemoveFirstBox() throws IncorrectNumberOfBoxesException {
 
-        verifyNumberOfBoxesIsCorrect(numberOfBoxes, "pickFirstBox anropad i fel ordning");
+        verifyNumberOfBoxesIsCorrect(intNumberOfBoxesFromTheBeginning, "pickFirstBox anropad i fel ordning");
 
         Random random = new Random();
         int intRandomChoseBox = random.nextInt(montyHallBoxList.size());
@@ -42,7 +42,7 @@ public class MontyHallGame {
     }
     public void removeOneEmptyRemaingBox() throws IncorrectNumberOfBoxesException {
 
-        int expectedNumberOfBoxes = numberOfBoxes - 1;
+        int expectedNumberOfBoxes = intNumberOfBoxesFromTheBeginning - 1;
         verifyNumberOfBoxesIsCorrect(expectedNumberOfBoxes, "removeOneEmptyRemaingBox anropad i fel ordning");
 
 
@@ -55,7 +55,7 @@ public class MontyHallGame {
 
     public MontyHallBox switchBox()  throws IncorrectNumberOfBoxesException  {
 
-        int expectedNumberOfBoxes = numberOfBoxes - 2;
+        int expectedNumberOfBoxes = intNumberOfBoxesFromTheBeginning - 2;
         verifyNumberOfBoxesIsCorrect(expectedNumberOfBoxes, "switchBox anropad i fel ordning");
 
         return montyHallBoxList.get(0);
